@@ -5,7 +5,7 @@ class downwardsObstacle {
         this.left = this.gameScreen.offsetWidth - 80
         this.top = 0
         this.width = 50
-        this.height;
+        this.height = obstacleHeight();
 
         //Create img element, for now. If not maybe canvas.
         this.element = document.createElement("img")
@@ -39,7 +39,9 @@ class upwardsObstacle {
         this.left = this.gameScreen.offsetWidth - 80
         this.top = this.gameScreen.offserHeight
         this.width = 50
-        this.height;
+
+        //Height will depend on screen size, gap between obstacles and height of other obstacle
+        this.height = Game.height - downwardsObstacle.height - 100;
 
         //Create img element, for now. If not maybe canvas.
         this.element = document.createElement("img")
@@ -64,4 +66,13 @@ class upwardsObstacle {
         //Update position onscreen
         this.updatePosition()
     }
+}
+
+function obstacleHeight() {
+    const gap = 100
+    const minHeight = 150
+    const maxHeight = Game.height - gap - minHeight
+
+    let downwardsObstacleHeight = Math.round(Math.random() * (maxHeight - minHeight)) + minHeight //This way we ensure height to AT LEAST be equal to minHeight
+    return downwardsObstacleHeight
 }

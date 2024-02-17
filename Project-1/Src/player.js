@@ -36,7 +36,7 @@ class Player {
 
   didItCollide(obstacle) {
     //In order to check collision we need to know if player element overlaps the obstacle's one
-    //So we create a rectangle that exactly fits the player/obstacles boundaries
+    //So we create a rectangle that exactly fitsx1 the player/obstacles boundaries
     const playerArea = this.element.getBoundingClientRect();
     const obstacleArea = obstacle.element.getBoundingClientRect();
 

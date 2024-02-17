@@ -6,7 +6,8 @@ class Game {
     this.player = null;
     this.height = 700;
     this.width = 1000;
-    this.obstacles = [];
+    this.upwardObstacles = [];
+    this.downwardObstacles = [];
 
     //In order to update both Score & Best Score
     this.scoreElement = document.getElementById("score");
@@ -18,6 +19,8 @@ class Game {
     this.isGameOver = false;
     this.gameIntervalId;
     this.refreshRate = 1000 / 60; //60fps
+
+    this.obstacleIntervalId;
   }
 
   start() {
@@ -42,12 +45,21 @@ class Game {
 
     if (this.isGameOver) {
       clearInterval(this.gameIntervalId);
+      clearInterval(this.obstacleIntervalId);
     }
   }
 
   update() {
     //player position/movement
+
     //Create new pipeline each time one disappears
+
+    if (this.downwardObstacles < 5) {
+      this.obstacleIntervalId = setInterval(() => {
+        this.downwardObstacles.push(new upwardsObstacle(this.gameScreen));
+      }, 1500);
+    }
+
     //what happens after collision
   }
 

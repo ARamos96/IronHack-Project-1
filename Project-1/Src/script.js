@@ -9,9 +9,9 @@ window.onload = function () {
     game.start();
   }
 
-  startButton.onclick = function () {
+  startButton.addEventListener("click", function () {
     startGame();
-  };
+  });
 
   function restartGame() {
     location.reload();

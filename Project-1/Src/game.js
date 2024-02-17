@@ -3,7 +3,14 @@ class Game {
     this.startScreen = document.getElementById("start-screen");
     this.gameScreen = document.getElementById("game-screen");
     this.endScreen = document.getElementById("end-screen");
-    this.player = null;
+    this.player = new Player(
+      this.gameScreen,
+      80,
+      300,
+      50,
+      75,
+      '/Project-1/Images/jimmy-jump.png'
+    );
     this.height = 700;
     this.width = 1000;
     this.upwardObstacles = [];
@@ -25,14 +32,14 @@ class Game {
 
   start() {
     //Undisplay start screen
-    this.startScreen.style.display = none;
-
-    //Display game screen
-    this.gameScreen.style.display = block;
-
+    this.startScreen.style.display = 'none';
+    
     //Set size of game screen
     this.gameScreen.style.height = `${this.height}px`;
     this.gameScreen.style.width = `${this.width}px`;
+
+    //Display game screen
+    this.gameScreen.style.display = 'block';
 
     //Set loop interval
     this.gameIntervalId = setInterval(() => {
@@ -54,12 +61,17 @@ class Game {
 
     //Create new pipeline each time one disappears
 
-    if (this.downwardObstacles < 5) {
+    if (this.downwardObstacles.length < 5) {
+      this.obstacleIntervalId = setInterval(() => {
+        this.downwardObstacles.push(new downwardsObstacle(this.gameScreen));
+      }, 1500);
+    }
+    
+    if (this.upwardObstacles.length < 5) {
       this.obstacleIntervalId = setInterval(() => {
         this.downwardObstacles.push(new upwardsObstacle(this.gameScreen));
       }, 1500);
     }
-
     //what happens after collision
   }
 

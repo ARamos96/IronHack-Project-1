@@ -3,3 +3,35 @@ body {
     text-align: center;
 }
 
+#start-screen {
+    display: block;
+    padding: 20px 10px;
+}
+
+#game-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px 10px;
+}
+
+#game-screen {
+    display: none;
+    align-content: center;
+}
+
+#end-screen {
+    display: block;
+}
+
+#end-screen img {
+    height: 300px;
+    width: 300px;
+}
+
+button {
+    font-size: 35px;
+    border: 0;
+    background-color: rgb(9, 160, 110);
+    padding: 20px 30px;
+    border-radius: 20px;
+}

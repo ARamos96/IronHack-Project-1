@@ -24,4 +24,8 @@ window.onload = function () {
   startButton.onclick = function () {
     startGame();
   };
+
+  window.addEventListener("keydown", function(event){
+   console.log(event.code)
+  })
 };

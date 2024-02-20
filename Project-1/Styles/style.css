@@ -17,6 +17,7 @@ body {
 #game-screen {
     display: none;
     align-content: center;
+    overflow: hidden;
 }
 
 #end-screen {

@@ -8,8 +8,8 @@ class Game {
       80,
       300,
       50,
-      75,
-      '/Project-1/Images/jimmy-jump.png'
+      120,
+      '/Images/jimmy-jump.png'
     );
     this.height = 700;
     this.width = 1000;
@@ -62,15 +62,11 @@ class Game {
     //Create new pipeline each time one disappears
 
     if (this.downwardObstacles.length < 5) {
-      this.obstacleIntervalId = setInterval(() => {
         this.downwardObstacles.push(new downwardsObstacle(this.gameScreen));
-      }, 1500);
     }
     
     if (this.upwardObstacles.length < 5) {
-      this.obstacleIntervalId = setInterval(() => {
-        this.downwardObstacles.push(new upwardsObstacle(this.gameScreen));
-      }, 1500);
+      this.upwardObstacles.push(new upwardsObstacle(this.gameScreen));
     }
     //what happens after collision
   }

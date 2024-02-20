@@ -9,7 +9,7 @@ class downwardsObstacle {
 
     //Create img element, for now. If not maybe canvas.
     this.element = document.createElement("img");
-    this.element.src = '/Project-1/Images/downward-steward.png'
+    this.element.src = '/Images/downward-steward.png'
       this.element.style.height = `${this.height}px`;
     this.element.style.width = `${this.width}px`;
     this.element.style.top = `${this.top}px`;
@@ -55,7 +55,7 @@ class upwardsObstacle {
 
     //Create img element, for now. If not maybe canvas.
     this.element = document.createElement("img");
-    this.element.src = '/Project-1/Images/steward.png'
+    this.element.src = '/Images/steward.png'
       this.element.style.height = `${this.height}px`;
     this.element.style.width = `${this.width}px`;
     this.element.style.top = `${this.top}px`;

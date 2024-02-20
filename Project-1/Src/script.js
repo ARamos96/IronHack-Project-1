@@ -27,7 +27,7 @@ window.onload = function () {
 
   window.addEventListener("keydown", function (event) {
     if (event.code == "Space") {
-      game.player.directionY = -8;
+      game.player.directionY = -10;
     }
   });
 

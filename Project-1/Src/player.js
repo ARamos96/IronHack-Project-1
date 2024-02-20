@@ -9,6 +9,9 @@ class Player {
     //Only one axis movement because player only moves vertically.
     this.directionY = 0;
 
+    //Gravity to pull the player down
+    this.gravity = -2
+
     //Create img element on html
     this.element = document.createElement("img");
 
@@ -27,7 +30,7 @@ class Player {
   }
 
   move() {
-    this.top += this.directionY;
+    this.top += this.directionY - this.gravity;
 
     //No need to establish screen boundaries because if it touches border isGameOver == true
 

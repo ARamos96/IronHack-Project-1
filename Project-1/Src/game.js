@@ -77,6 +77,12 @@ class Game {
       this.endGame()
     }
 
+    //End game if player touches screen's border
+    if (this.player.top + this.player.height > this.height ||
+      this.player.top < 0) {
+        this.endGame()
+      }
+
   }
 
   endGame() {

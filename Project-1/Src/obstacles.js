@@ -47,7 +47,7 @@ class upwardsObstacle {
   constructor(gameScreen) {
     this.gameScreen = gameScreen;
     this.left = this.gameScreen.offsetWidth - 80;
-    this.top = this.gameScreen.offsetHeight - this.height; //Although an upward pipe, img extends downwards. If y were 0, pipe would extend out of the screen
+    this.top = 700; //Although an upward pipe, img extends downwards. If y were 0, pipe would extend out of the screen
     this.width = 50;
 
     //Height will depend on screen size, gap between obstacles and height of other obstacle

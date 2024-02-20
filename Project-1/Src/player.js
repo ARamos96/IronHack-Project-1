@@ -10,7 +10,7 @@ class Player {
     this.directionY = 0;
 
     //Gravity to pull the player down
-    this.gravity = -2
+    this.gravity = -3
 
     //Create img element on html
     this.element = document.createElement("img");

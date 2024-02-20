@@ -15,10 +15,11 @@ body {
 }
 
 #game-screen {
-  background-color: red;
   display: none;
   align-content: center;
   overflow: hidden;
+  background-color: red;
+  position: relative;
 }
 
 #end-screen {

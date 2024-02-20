@@ -52,23 +52,22 @@ class Game {
 
     if (this.isGameOver) {
       clearInterval(this.gameIntervalId);
-      clearInterval(this.obstacleIntervalId);
     }
   }
 
   update() {
     //player position/movement
     this.player.move();
-
+    
     //Create new pipeline each time one disappears
 
-    if (this.downwardObstacles.length < 5) {
+    /*if (this.downwardObstacles.length < 5) {
       this.downwardObstacles.push(new downwardsObstacle(this.gameScreen));
-    }
+    }*/
 
-    if (this.upwardObstacles.length < 5) {
+    /*if (this.upwardObstacles.length < 1) {
       this.upwardObstacles.push(new upwardsObstacle(this.gameScreen));
-    }
+    }*/
     //what happens after collision
   }
 

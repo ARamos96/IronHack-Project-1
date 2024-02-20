@@ -9,7 +9,7 @@ class Game {
       300,
       50,
       120,
-      '/Images/jimmy-jump.png'
+      "/Images/jimmy-jump.png"
     );
     this.height = 700;
     this.width = 1000;
@@ -32,14 +32,14 @@ class Game {
 
   start() {
     //Undisplay start screen
-    this.startScreen.style.display = 'none';
-    
+    this.startScreen.style.display = "none";
+
     //Set size of game screen
     this.gameScreen.style.height = `${this.height}px`;
     this.gameScreen.style.width = `${this.width}px`;
 
     //Display game screen
-    this.gameScreen.style.display = 'block';
+    this.gameScreen.style.display = "block";
 
     //Set loop interval
     this.gameIntervalId = setInterval(() => {
@@ -58,13 +58,14 @@ class Game {
 
   update() {
     //player position/movement
+    this.player.move();
 
     //Create new pipeline each time one disappears
 
     if (this.downwardObstacles.length < 5) {
-        this.downwardObstacles.push(new downwardsObstacle(this.gameScreen));
+      this.downwardObstacles.push(new downwardsObstacle(this.gameScreen));
     }
-    
+
     if (this.upwardObstacles.length < 5) {
       this.upwardObstacles.push(new upwardsObstacle(this.gameScreen));
     }
@@ -73,7 +74,14 @@ class Game {
 
   endGame() {
     //Remove player + obstacles
+    this.player.element.remove();
+
+    this.isGameOver = true;
+
     //Undisplay game screen
+    this.gameScreen.style.display = "none";
+
     //Display end screen
+    this.endScreen.style.display = "block";
   }
 }

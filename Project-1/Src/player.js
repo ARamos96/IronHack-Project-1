@@ -31,7 +31,7 @@ class Player {
 
     //No need to establish screen boundaries because if it touches border isGameOver == true
 
-    updatePosition();
+    this.updatePosition();
   }
 
   didItCollide(obstacle) {
@@ -55,6 +55,6 @@ class Player {
   }
 
   updatePosition() {
-    this.element.style.top = `${this.top}px`
+    this.element.style.top = `${this.top}px`;
   }
 }

@@ -25,7 +25,16 @@ window.onload = function () {
     startGame();
   };
 
-  window.addEventListener("keydown", function(event){
-   console.log(event.code)
-  })
+  window.addEventListener("keydown", function (event) {
+    if (event.code == "Space") {
+      game.player.directionY = -8;
+    }
+  });
+
+  //We are stopping the player from moving once the key is released
+  window.addEventListener("keyup", function (event) {
+    if (event.code == "Space") {
+      game.player.directionY = 0;
+    }
+  });
 };

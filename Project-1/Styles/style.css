@@ -18,16 +18,17 @@ body {
   height: 250px;
 }
 
-#start-screen h2, p{
-    color: rgb(249, 249, 249);
+#start-screen h2,
+p {
+  color: rgb(249, 249, 249);
 }
 
 h2 {
-    font-size: 50px;
+  font-size: 50px;
 }
 
 p {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 #game-container {
@@ -35,8 +36,8 @@ p {
   justify-content: center;
 }
 
-#game-container p{
-    color: rgb(0, 0, 0);
+#game-container p {
+  color: rgb(0, 0, 0);
 }
 
 #game-screen {
@@ -49,7 +50,13 @@ p {
 }
 
 #end-screen {
+  height: 80vh;
+  width: 100vw;
   display: none;
+  background-image: url(../Images/football-background.avif);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 #end-screen img {

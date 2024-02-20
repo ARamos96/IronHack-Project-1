@@ -10,7 +10,7 @@ class Player {
     this.directionY = 0;
 
     //Gravity to pull the player down
-    this.gravity = -3
+    this.gravity = 0;
 
     //Create img element on html
     this.element = document.createElement("img");
@@ -35,6 +35,7 @@ class Player {
     //No need to establish screen boundaries because if it touches border isGameOver == true
 
     this.updatePosition();
+;
   }
 
   didItCollide(obstacle) {

@@ -13,8 +13,8 @@ class Game {
     );
     this.height = 700;
     this.width = 1000;
-    this.upwardObstacles = new upwardsObstacle(this.gameScreen);
-    this.downwardObstacles = new downwardsObstacle(this.gameScreen);
+    this.upwardObstacles = [];
+    this.downwardObstacles = [];
 
     //In order to update both Score & Best Score
     this.scoreElement = document.getElementById("score");
@@ -59,14 +59,50 @@ class Game {
     //player position/movement
     this.player.move();
 
-    this.upwardObstacles.move();
-    this.downwardObstacles.move();
+    this.upwardObstacles.move()
+    this.downwardObstacles.move()
 
-    //Create new pipeline each time one disappears
 
-    /*if (this.downwardObstacles.length < 5) {
-      this.downwardObstacles.push(new downwardsObstacle(this.gameScreen));
-    }*/
+    for (let i = 0; i < this.upwardObstacles.length; i++) {
+      const upwardObstacle = this.upwardObstacles[i]
+      upwardObstacle.move()
+
+    }
+    
+    for (let i = 0; i < this.downwardObstacles.length; i++) {
+      const downwardObstacle = this.downwardObstacles[i]
+      downwardObstacle.move()
+
+      //What to do when obstacle exits screen on the left
+      if(downwardObstacle.left < 0) {
+        //Add 1 point
+        this.score++
+
+        //Update score
+        this.scoreElement.innerHTML = this.score
+
+        if(this.score > this.bestScore){
+          this.bestScore = this.score
+          this.bestScoreElement.innerHTML = this.bestScore
+        }
+
+        //Remove from screen
+        downwardObstacle.element.remove()
+
+        //Remove from array
+        this.downwardObstacles.splice(i, 1)
+
+        //Decrease counter because we have 1 less obstacle
+        i--
+      }
+
+      //Create new steward each time one disappears
+      if (this.downwardObstacles.length == 0) {
+        this.downwardObstacles.push(new downwardsObstacle(this.gameScreen));
+      }
+    }
+
+
 
     /*if (this.upwardObstacles.length < 1) {
       this.upwardObstacles.push(new upwardsObstacle(this.gameScreen));
@@ -74,6 +110,8 @@ class Game {
 
     //what happens after collision
     if (this.player.didItCollide(this.downwardObstacles)) {
+      this.endGame()
+    } else if (this.player.didItCollide(this.upwardObstacles)) {
       this.endGame()
     }
 

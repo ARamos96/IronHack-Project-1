@@ -6,14 +6,37 @@ body {
 #start-screen {
   display: block;
   padding: 20px 10px;
+  height: 80vh;
+  width: 100vw;
   background-image: url(../Images/football-background.avif);
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#start-screen img {
+  height: 250px;
+}
+
+#start-screen h2, p{
+    color: rgb(249, 249, 249);
+}
+
+h2 {
+    font-size: 50px;
+}
+
+p {
+    font-size: 30px;
 }
 
 #game-container {
   display: flex;
   justify-content: center;
-  padding: 20px 10px;
+}
+
+#game-container p{
+    color: rgb(0, 0, 0);
 }
 
 #game-screen {
@@ -30,8 +53,9 @@ body {
 }
 
 #end-screen img {
+  padding: 50px;
   height: 300px;
-  width: 300px;
+  width: 600px;
 }
 
 button {

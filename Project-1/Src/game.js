@@ -71,7 +71,12 @@ class Game {
     /*if (this.upwardObstacles.length < 1) {
       this.upwardObstacles.push(new upwardsObstacle(this.gameScreen));
     }*/
+
     //what happens after collision
+    if (this.player.didItCollide(this.downwardObstacles)) {
+      this.endGame()
+    }
+
   }
 
   endGame() {
@@ -84,6 +89,9 @@ class Game {
     this.gameScreen.style.display = "none";
 
     //Display end screen
-    this.endScreen.style.display = "block";
+    this.endScreen.style.display = "flex"
+    this.endScreen.style.flexDirection = 'column';
+    this.endScreen.style.alignItems = 'center';
+    this.endScreen.style.justifyContent = 'center';
   }
 }

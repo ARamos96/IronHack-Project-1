@@ -59,17 +59,12 @@ class Game {
     //player position/movement
     this.player.move();
 
-    this.upwardObstacles.move()
-    this.downwardObstacles.move()
-
-
     for (let i = 0; i < this.upwardObstacles.length; i++) {
-      const upwardObstacle = this.upwardObstacles[i]
-      upwardObstacle.move()
-
+      const upwardObstacle = this.upwardObstacles[i];
+      upwardObstacle.move();
     }
-    
-    for (let i = 0; i < this.downwardObstacles.length; i++) {
+
+    /*for (let i = 0; i < this.downwardObstacles.length; i++) {
       const downwardObstacle = this.downwardObstacles[i]
       downwardObstacle.move()
 
@@ -97,30 +92,24 @@ class Game {
       }
 
       //Create new steward each time one disappears
-      if (this.downwardObstacles.length == 0) {
+      if (this.downwardObstacles.length < 1) {
         this.downwardObstacles.push(new downwardsObstacle(this.gameScreen));
       }
     }
-
-
 
     /*if (this.upwardObstacles.length < 1) {
       this.upwardObstacles.push(new upwardsObstacle(this.gameScreen));
     }*/
 
-    //what happens after collision
-    if (this.player.didItCollide(this.downwardObstacles)) {
-      this.endGame()
-    } else if (this.player.didItCollide(this.upwardObstacles)) {
-      this.endGame()
+    //what happens after collision - Game Ends
+    if (
+      this.player.top + this.player.height > this.height ||
+      this.player.top < 0 ||
+      this.player.didItCollide(this.downwardObstacles) ||
+      this.player.didItCollide(this.upwardObstacles)
+    ) {
+      this.endGame();
     }
-
-    //End game if player touches screen's border
-    if (this.player.top + this.player.height > this.height ||
-      this.player.top < 0) {
-        this.endGame()
-      }
-
   }
 
   endGame() {
@@ -133,9 +122,9 @@ class Game {
     this.gameScreen.style.display = "none";
 
     //Display end screen
-    this.endScreen.style.display = "flex"
-    this.endScreen.style.flexDirection = 'column';
-    this.endScreen.style.alignItems = 'center';
-    this.endScreen.style.justifyContent = 'center';
+    this.endScreen.style.display = "flex";
+    this.endScreen.style.flexDirection = "column";
+    this.endScreen.style.alignItems = "center";
+    this.endScreen.style.justifyContent = "center";
   }
 }

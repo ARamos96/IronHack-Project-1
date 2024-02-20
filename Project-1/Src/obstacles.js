@@ -1,4 +1,4 @@
-//One class for pipes going down
+//One class for obtacle going down
 class downwardsObstacle {
   constructor(gameScreen) {
     this.gameScreen = gameScreen;
@@ -10,6 +10,7 @@ class downwardsObstacle {
     //Create img element, for now. If not maybe canvas.
     this.element = document.createElement("img");
     this.element.src = "/Images/downward-steward.png";
+    this.element.style.position = "absolute";
     this.element.style.height = `${this.height}px`;
     this.element.style.width = `${this.width}px`;
     this.element.style.top = `${this.top}px`;
@@ -25,7 +26,7 @@ class downwardsObstacle {
 
   move() {
     //Move obstacle left
-    this.left -= 5;
+    this.left -= 3;
 
     //Update position onscreen
     this.updatePosition();
@@ -34,7 +35,7 @@ class downwardsObstacle {
   obstacleHeight() {
     const gap = 100;
     const minHeight = 150;
-    const maxHeight = Game.height - gap - minHeight;
+    const maxHeight = 700 - gap - minHeight;
 
     let downwardsObstacleHeight =
       Math.round(Math.random() * (maxHeight - minHeight)) + minHeight; //This way we ensure height to AT LEAST be equal to minHeight (if math.round = 0)
@@ -42,20 +43,22 @@ class downwardsObstacle {
   }
 }
 
-//And another class for pipes going up
+//And another class for obstacle going up
 class upwardsObstacle {
   constructor(gameScreen) {
     this.gameScreen = gameScreen;
-    this.left = this.gameScreen.offsetWidth - 80;
-    this.top = 700; //Although an upward pipe, img extends downwards. If y were 0, pipe would extend out of the screen
-    this.width = 50;
+    this.left = this.gameScreen.offsetWidth - 50;
 
     //Height will depend on screen size, gap between obstacles and height of other obstacle
     this.height = Game.height - downwardsObstacle.height - 100;
 
+    this.top = 700 - this.height; //Although an upward pipe, img extends downwards. If y were 0, pipe would extend out of the screen
+    this.width = 50;
+
     //Create img element, for now. If not maybe canvas.
     this.element = document.createElement("img");
     this.element.src = "/Images/steward.png";
+    this.element.style.position = "absolute";
     this.element.style.height = `${this.height}px`;
     this.element.style.width = `${this.width}px`;
     this.element.style.top = `${this.top}px`;
@@ -71,7 +74,7 @@ class upwardsObstacle {
 
   move() {
     //Move obstacle left
-    this.left -= 5;
+    this.left -= 3;
 
     //Update position onscreen
     this.updatePosition();

@@ -5,7 +5,7 @@ class Game {
     this.endScreen = document.getElementById("end-screen");
     this.player = new Player(
       this.gameScreen,
-      80,
+      150,
       300,
       50,
       120,
@@ -13,8 +13,8 @@ class Game {
     );
     this.height = 700;
     this.width = 1000;
-    this.upwardObstacles = [];
-    this.downwardObstacles = [];
+    this.upwardObstacles = new upwardsObstacle(this.gameScreen);
+    this.downwardObstacles = new downwardsObstacle(this.gameScreen);
 
     //In order to update both Score & Best Score
     this.scoreElement = document.getElementById("score");
@@ -58,7 +58,10 @@ class Game {
   update() {
     //player position/movement
     this.player.move();
-    
+
+    this.upwardObstacles.move();
+    this.downwardObstacles.move();
+
     //Create new pipeline each time one disappears
 
     /*if (this.downwardObstacles.length < 5) {

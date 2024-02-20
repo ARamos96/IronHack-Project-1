@@ -6,6 +6,8 @@ body {
 #start-screen {
   display: block;
   padding: 20px 10px;
+  background-image: url(../Images/football-background.avif);
+  background-size: cover;
 }
 
 #game-container {
@@ -18,7 +20,8 @@ body {
   display: none;
   align-content: center;
   overflow: hidden;
-  background-color: red;
+  background-image: url(../Images/football-background.avif);
+  background-size: cover;
   position: relative;
 }
 

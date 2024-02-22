@@ -4,7 +4,7 @@ class downwardsObstacle {
     this.gameScreen = gameScreen;
     this.left = this.gameScreen.offsetWidth - 80;
     this.top = 0;
-    this.width = 80;
+    this.width = 70;
     this.height = obstacleHeight()[0];
 
     //Create img element, for now. If not maybe canvas.
@@ -43,7 +43,7 @@ class upwardsObstacle {
     this.height = obstacleHeight()[1];
 
     this.top = 700 - this.height; //Although an upward pipe, img extends downwards. If y were 0, pipe would extend out of the screen
-    this.width = 80;
+    this.width = 70;
 
     //Create <img> element, for now. If not maybe canvas.
     this.element = document.createElement("img");
@@ -72,9 +72,9 @@ class upwardsObstacle {
 }
 
 function obstacleHeight() {
-  const gap = 150;
+  const gap = 180;
   const minHeight = 150;
-  const maxHeight = 700 - gap - minHeight;
+  const maxHeight = 300;
 
   let downwardsObstacleHeight =
     Math.round(Math.random() * (maxHeight - minHeight)) + minHeight; //This way we ensure height to AT LEAST be equal to minHeight (if math.round = 0)

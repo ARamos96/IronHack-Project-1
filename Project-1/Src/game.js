@@ -27,7 +27,7 @@ class Game {
     this.gameIntervalId;
     this.refreshRate = 1000 / 60; //60fps
 
-    //this.obstacleIntervalId;
+    this.obstacleIntervalId;
   }
 
   start() {
@@ -45,7 +45,6 @@ class Game {
     this.gameIntervalId = setInterval(() => {
       this.gameLoop();
     }, this.refreshRate);
-
   }
 
   gameLoop() {
@@ -65,12 +64,6 @@ class Game {
       upwardObstacle.move();
 
       if (upwardObstacle.left < 0) {
-        //Add 1 point
-        this.score++;
-
-        //Update score
-        this.scoreElement.innerHTML = this.score;
-
         //Remove from screen
         upwardObstacle.element.remove();
 
@@ -122,13 +115,8 @@ class Game {
     //Create new steward each time one disappears
     if (this.downwardObstacles.length < 1) {
       this.downwardObstacles.push(new downwardsObstacle(this.gameScreen));
-    }
-
-    if (this.upwardObstacles.length < 1) {
       this.upwardObstacles.push(new upwardsObstacle(this.gameScreen));
     }
-
-    
   }
 
   endGame() {

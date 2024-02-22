@@ -45,7 +45,7 @@ class upwardsObstacle {
     this.top = 700 - this.height; //Although an upward pipe, img extends downwards. If y were 0, pipe would extend out of the screen
     this.width = 80;
 
-    //Create img element, for now. If not maybe canvas.
+    //Create <img> element, for now. If not maybe canvas.
     this.element = document.createElement("img");
     this.element.src = "/Project-1/Images/steward.png";
     this.element.style.position = "absolute";
@@ -54,7 +54,7 @@ class upwardsObstacle {
     this.element.style.top = `${this.top}px`;
     this.element.style.left = `${this.left}px`;
 
-    //Append img to HTML
+    //Append <img> to HTML
     this.gameScreen.appendChild(this.element);
   }
 

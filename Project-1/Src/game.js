@@ -133,5 +133,9 @@ class Game {
     this.endScreen.style.flexDirection = "column";
     this.endScreen.style.alignItems = "center";
     this.endScreen.style.justifyContent = "center";
+
+    //Add sound effects
+    const wastedAudio = document.getElementById('wasted-sound')
+    wastedAudio.play()
   }
 }

@@ -10,9 +10,9 @@ class Player {
     this.directionY = 0;
 
     //Gravity to pull the player down
-    this.gravity = -3;
+    this.gravity = 0;
 
-    //Create img element on html
+    //Create <img> element on html
     this.element = document.createElement("img");
 
     //Pass an URL as an argument to use as source
@@ -25,7 +25,7 @@ class Player {
     this.element.style.width = `${this.width}px`;
     this.element.style.height = `${this.height}px`;
 
-    //Append above img to the HTML file
+    //Append above <img> to the HTML file
     this.gameScreen.appendChild(this.element);
   }
 

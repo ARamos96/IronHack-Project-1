@@ -14,7 +14,7 @@ class Game {
     this.height = 700;
     this.width = 1000;
     this.upwardObstacles = [];
-    this.downwardObstacles = [new downwardsObstacle(this.gameScreen)];
+    this.downwardObstacles = [];
 
     //In order to update both Score & Best Score
     this.scoreElement = document.getElementById("score");
@@ -111,7 +111,6 @@ class Game {
       } else if (
         this.player.top + this.player.height > this.height ||
         this.player.top < 0 ||
-        this.player.didItCollide(downwardObstacle) ||
         this.player.didItCollide(downwardObstacle)
       ) {
         this.endGame();
@@ -121,13 +120,13 @@ class Game {
     console.log(this.downwardObstacles.length);
 
     //Create new steward each time one disappears
-    /*if (this.downwardObstacles.length < 1) {
+    if (this.downwardObstacles.length < 1) {
       this.downwardObstacles.push(new downwardsObstacle(this.gameScreen));
-    }*/
+    }
 
-    /*if (this.upwardObstacles.length < 1) {
+    if (this.upwardObstacles.length < 1) {
       this.upwardObstacles.push(new upwardsObstacle(this.gameScreen));
-    }*/
+    }
 
     
   }

@@ -10,23 +10,24 @@ class Player {
     this.directionY = 0;
 
     //Gravity to pull the player down
-    this.gravity = -3;
+    this.gravity = 0;
 
     //Create img element on html
     this.element = document.createElement("img");
 
-    //Append above img to the HTML file
-    this.gameScreen.appendChild(this.element);
-
     //Pass an URL as an argument to use as source
     this.element.src = image;
-
+    
     //Define player's position and size on the screen
     this.element.style.position = "absolute";
     this.element.style.left = `${this.left}px`;
     this.element.style.top = `${this.top}px`;
     this.element.style.width = `${this.width}px`;
     this.element.style.height = `${this.height}px`;
+    
+    //Append above img to the HTML file
+    this.gameScreen.appendChild(this.element);
+
   }
 
   move() {

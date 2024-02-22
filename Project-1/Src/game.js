@@ -7,14 +7,14 @@ class Game {
       this.gameScreen,
       150,
       300,
-      50,
-      120,
+      30,
+      90,
       "/Images/jimmy-jump.png"
     );
     this.height = 700;
     this.width = 1000;
     this.upwardObstacles = [];
-    this.downwardObstacles = [];
+    this.downwardObstacles = [new downwardsObstacle(this.gameScreen)];
 
     //In order to update both Score & Best Score
     this.scoreElement = document.getElementById("score");
@@ -27,7 +27,7 @@ class Game {
     this.gameIntervalId;
     this.refreshRate = 1000 / 60; //60fps
 
-    this.obstacleIntervalId;
+    //this.obstacleIntervalId;
   }
 
   start() {
@@ -45,6 +45,7 @@ class Game {
     this.gameIntervalId = setInterval(() => {
       this.gameLoop();
     }, this.refreshRate);
+
   }
 
   gameLoop() {
@@ -62,54 +63,73 @@ class Game {
     for (let i = 0; i < this.upwardObstacles.length; i++) {
       const upwardObstacle = this.upwardObstacles[i];
       upwardObstacle.move();
-    }
 
-    /*for (let i = 0; i < this.downwardObstacles.length; i++) {
-      const downwardObstacle = this.downwardObstacles[i]
-      downwardObstacle.move()
-
-      //What to do when obstacle exits screen on the left
-      if(downwardObstacle.left < 0) {
+      if (upwardObstacle.left < 0) {
         //Add 1 point
-        this.score++
+        this.score++;
 
         //Update score
-        this.scoreElement.innerHTML = this.score
-
-        if(this.score > this.bestScore){
-          this.bestScore = this.score
-          this.bestScoreElement.innerHTML = this.bestScore
-        }
+        this.scoreElement.innerHTML = this.score;
 
         //Remove from screen
-        downwardObstacle.element.remove()
+        upwardObstacle.element.remove();
 
         //Remove from array
-        this.downwardObstacles.splice(i, 1)
+        this.upwardObstacles.splice(i, 1);
 
         //Decrease counter because we have 1 less obstacle
-        i--
-      }
-
-      //Create new steward each time one disappears
-      if (this.downwardObstacles.length < 1) {
-        this.downwardObstacles.push(new downwardsObstacle(this.gameScreen));
+        i--;
+      } else if (
+        this.player.top + this.player.height > this.height ||
+        this.player.top < 0 ||
+        this.player.didItCollide(upwardObstacle)
+      ) {
+        this.endGame();
       }
     }
+
+    for (let i = 0; i < this.downwardObstacles.length; i++) {
+      const downwardObstacle = this.downwardObstacles[i];
+      downwardObstacle.move();
+
+      //What to do when obstacle exits screen on the left
+      if (downwardObstacle.left < 0) {
+        //Add 1 point
+        this.score++;
+
+        //Update score
+        this.scoreElement.innerHTML = this.score;
+
+        //Remove from screen
+        downwardObstacle.element.remove();
+
+        //Remove from array
+        this.downwardObstacles.splice(i, 1);
+
+        //Decrease counter because we have 1 less obstacle
+        i--;
+      } else if (
+        this.player.top + this.player.height > this.height ||
+        this.player.top < 0 ||
+        this.player.didItCollide(downwardObstacle) ||
+        this.player.didItCollide(downwardObstacle)
+      ) {
+        this.endGame();
+      }
+    }
+
+    console.log(this.downwardObstacles.length);
+
+    //Create new steward each time one disappears
+    /*if (this.downwardObstacles.length < 1) {
+      this.downwardObstacles.push(new downwardsObstacle(this.gameScreen));
+    }*/
 
     /*if (this.upwardObstacles.length < 1) {
       this.upwardObstacles.push(new upwardsObstacle(this.gameScreen));
     }*/
 
-    //what happens after collision - Game Ends
-    if (
-      this.player.top + this.player.height > this.height ||
-      this.player.top < 0 ||
-      this.player.didItCollide(this.downwardObstacles) ||
-      this.player.didItCollide(this.upwardObstacles)
-    ) {
-      this.endGame();
-    }
+    
   }
 
   endGame() {

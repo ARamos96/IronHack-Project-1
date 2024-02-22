@@ -72,7 +72,7 @@ class upwardsObstacle {
 }
 
 function obstacleHeight() {
-  const gap = 250;
+  const gap = 150;
   const minHeight = 150;
   const maxHeight = 700 - gap - minHeight;
 

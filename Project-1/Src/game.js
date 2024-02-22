@@ -37,7 +37,7 @@ class Game {
 
     // Update the best score element
     this.bestScoreElement.innerHTML = this.bestScore;
-}
+  }
 
   start() {
     //Undisplay start screen
@@ -58,7 +58,6 @@ class Game {
     // Call reset when starting the game
     this.reset();
   }
-
 
   gameLoop() {
     this.update();
@@ -107,7 +106,7 @@ class Game {
         if (this.score > this.bestScore) {
           this.bestScore = this.score;
           this.bestScoreElement.innerHTML = this.bestScore;
-      }
+        }
 
         //Update score
         this.scoreElement.innerHTML = this.score;
@@ -141,11 +140,13 @@ class Game {
   endGame() {
     //Remove player + obstacles
     this.player.element.remove();
-    this.obstacles.forEach(function (obstacle) {
+    this.downwardObstacles.forEach(function (obstacle) {
       obstacle.element.remove();
     });
 
-    this.downwardObstacles.remove()
+    this.upwardObstacles.forEach(function (obstacle) {
+      obstacle.element.remove();
+    });
 
     this.isGameOver = true;
 

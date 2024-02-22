@@ -9,7 +9,7 @@ class Game {
       300,
       30,
       90,
-      '/Project-1/Images/jimmy-jump.png'
+      "/Project-1/Images/jimmy-jump.png"
     );
     this.height = 700;
     this.width = 1000;
@@ -30,6 +30,15 @@ class Game {
     this.obstacleIntervalId;
   }
 
+  reset() {
+    // Reset the score and update the score element
+    this.score = 0;
+    this.scoreElement.innerHTML = this.score;
+
+    // Update the best score element
+    this.bestScoreElement.innerHTML = this.bestScore;
+}
+
   start() {
     //Undisplay start screen
     this.startScreen.style.display = "none";
@@ -45,7 +54,11 @@ class Game {
     this.gameIntervalId = setInterval(() => {
       this.gameLoop();
     }, this.refreshRate);
+
+    // Call reset when starting the game
+    this.reset();
   }
+
 
   gameLoop() {
     this.update();
@@ -90,6 +103,12 @@ class Game {
         //Add 1 point
         this.score++;
 
+        //Update best score whenever score surpasses its value
+        if (this.score > this.bestScore) {
+          this.bestScore = this.score;
+          this.bestScoreElement.innerHTML = this.bestScore;
+      }
+
         //Update score
         this.scoreElement.innerHTML = this.score;
 
@@ -122,6 +141,11 @@ class Game {
   endGame() {
     //Remove player + obstacles
     this.player.element.remove();
+    this.obstacles.forEach(function (obstacle) {
+      obstacle.element.remove();
+    });
+
+    this.downwardObstacles.remove()
 
     this.isGameOver = true;
 
@@ -135,7 +159,7 @@ class Game {
     this.endScreen.style.justifyContent = "center";
 
     //Add sound effects
-    const wastedAudio = document.getElementById('wasted-sound')
-    wastedAudio.play()
+    const wastedAudio = document.getElementById("wasted-sound");
+    wastedAudio.play();
   }
 }

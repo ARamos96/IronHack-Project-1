@@ -21,10 +21,6 @@ window.onload = function () {
     restartGame();
   };
 
-  startButton.onclick = function () {
-    startGame();
-  };
-
   window.addEventListener("keydown", function (event) {
     if (event.code == "Space") {
       game.player.directionY = -15;

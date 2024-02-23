@@ -3,7 +3,7 @@ class Obstacle {
   static tempUpwardsObstacleHeight;
 
   static generateObstacleHeight() {
-    const gap = 130;
+    const gap = 140;
     const minHeight = 100;
     const maxHeight = 300;
 

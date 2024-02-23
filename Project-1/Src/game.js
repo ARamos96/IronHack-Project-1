@@ -9,7 +9,7 @@ class Game {
       300,
       40,
       60,
-      "../Images/jimmy-jump.png"
+      "Project-1/Images/jimmy-jump.png"
     );
     this.height = 700;
     this.width = 1000;

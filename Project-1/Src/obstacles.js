@@ -51,7 +51,7 @@ class Obstacle {
 class DownwardsObstacle extends Obstacle {
   constructor(gameScreen) {
 
-    const img = "../Images/downward-steward.png"
+    const img = "Project-1/Images/downward-steward.png"
     const height = Obstacle.tempDownwardsObstacleHeight
     const top = 0
 
@@ -64,7 +64,7 @@ class DownwardsObstacle extends Obstacle {
 class UpwardsObstacle extends Obstacle {
   constructor(gameScreen) {
 
-    const img = "../Images/steward.png"
+    const img = "Project-1/Images/steward.png"
     const height = Obstacle.tempUpwardsObstacleHeight
     const top = 700 - Obstacle.tempUpwardsObstacleHeight
 

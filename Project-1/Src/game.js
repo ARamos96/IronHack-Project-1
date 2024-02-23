@@ -3,6 +3,7 @@ class Game {
     this.startScreen = document.getElementById("start-screen");
     this.gameScreen = document.getElementById("game-screen");
     this.endScreen = document.getElementById("end-screen");
+    this.themeMusic = document.getElementById("theme-music");
     this.player = new Player(
       this.gameScreen,
       150,
@@ -54,6 +55,10 @@ class Game {
     this.gameIntervalId = setInterval(() => {
       this.gameLoop();
     }, this.refreshRate);
+
+    //Play game music theme
+    
+    this.themeMusic.play();
 
     // Call reset when starting the game
     this.reset();
@@ -130,9 +135,8 @@ class Game {
 
     //Create new steward each time one disappears
     if (this.downwardObstacles.length < 1) {
-
       Obstacle.generateObstacleHeight();
-      
+
       this.downwardObstacles.push(new DownwardsObstacle(this.gameScreen));
       this.upwardObstacles.push(new UpwardsObstacle(this.gameScreen));
     }
@@ -159,6 +163,9 @@ class Game {
     this.endScreen.style.flexDirection = "column";
     this.endScreen.style.alignItems = "center";
     this.endScreen.style.justifyContent = "center";
+
+    //Stop playing theme muic
+    this.themeMusic.pause()
 
     //Add sound effects
     const wastedAudio = document.getElementById("wasted-sound");

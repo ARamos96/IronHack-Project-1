@@ -3,7 +3,6 @@ class Game {
     this.startScreen = document.getElementById("start-screen");
     this.gameScreen = document.getElementById("game-screen");
     this.endScreen = document.getElementById("end-screen");
-    this.themeMusic = document.getElementById("theme-music");
     this.player = new Player(
       this.gameScreen,
       150,
@@ -13,7 +12,7 @@ class Game {
       "Project-1/Images/jimmy-jump.png"
     );
     this.height = 700;
-    this.width = 1000;
+    this.width = 800;
     this.upwardObstacles = [];
     this.downwardObstacles = [];
 
@@ -29,6 +28,10 @@ class Game {
     this.refreshRate = 1000 / 60; //60fps
 
     this.obstacleIntervalId;
+
+    //Add sounds
+    this.themeMusic = document.getElementById("theme-music");
+    this.wastedAudio = document.getElementById("wasted-sound");
   }
 
   reset() {
@@ -57,7 +60,7 @@ class Game {
     }, this.refreshRate);
 
     //Play game music theme
-    
+
     this.themeMusic.play();
 
     // Call reset when starting the game
@@ -165,10 +168,9 @@ class Game {
     this.endScreen.style.justifyContent = "center";
 
     //Stop playing theme muic
-    this.themeMusic.pause()
+    this.themeMusic.pause();
 
-    //Add sound effects
-    const wastedAudio = document.getElementById("wasted-sound");
-    wastedAudio.play();
+    //Play wasted sound effect
+    this.wastedAudio.play();
   }
 }

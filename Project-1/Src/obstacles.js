@@ -50,25 +50,21 @@ class Obstacle {
 //One class for obstacle going down
 class DownwardsObstacle extends Obstacle {
   constructor(gameScreen) {
+    const img = "Project-1/Images/downward-steward.png";
+    const height = Obstacle.tempDownwardsObstacleHeight;
+    const top = 0;
 
-    const img = "Project-1/Images/downward-steward.png"
-    const height = Obstacle.tempDownwardsObstacleHeight
-    const top = 0
-
-    super(gameScreen, img, top, height)
-
+    super(gameScreen, img, top, height);
   }
 }
 
 //And another class for obstacle going up
 class UpwardsObstacle extends Obstacle {
   constructor(gameScreen) {
+    const img = "Project-1/Images/steward.png";
+    const height = Obstacle.tempUpwardsObstacleHeight;
+    const top = 700 - Obstacle.tempUpwardsObstacleHeight;
 
-    const img = "Project-1/Images/steward.png"
-    const height = Obstacle.tempUpwardsObstacleHeight
-    const top = 700 - Obstacle.tempUpwardsObstacleHeight
-
-    super(gameScreen, img, top, height)
-
+    super(gameScreen, img, top, height);
   }
 }

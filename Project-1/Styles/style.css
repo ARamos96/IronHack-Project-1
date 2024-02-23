@@ -8,7 +8,7 @@ body {
   padding: 20px 10px;
   height: 80vh;
   width: 100vw;
-  background-image: url(Project-1/Images/football-background.avif);
+  background-image: url(../Images/football-background.avif);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

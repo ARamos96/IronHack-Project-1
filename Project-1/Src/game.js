@@ -7,8 +7,8 @@ class Game {
       this.gameScreen,
       150,
       300,
-      30,
-      80,
+      40,
+      60,
       "/Project-1/Images/jimmy-jump.png"
     );
     this.height = 700;
@@ -130,8 +130,11 @@ class Game {
 
     //Create new steward each time one disappears
     if (this.downwardObstacles.length < 1) {
-      this.downwardObstacles.push(new downwardsObstacle(this.gameScreen));
-      this.upwardObstacles.push(new upwardsObstacle(this.gameScreen));
+
+      Obstacle.generateObstacleHeight();
+      
+      this.downwardObstacles.push(new DownwardsObstacle(this.gameScreen));
+      this.upwardObstacles.push(new UpwardsObstacle(this.gameScreen));
     }
   }
 

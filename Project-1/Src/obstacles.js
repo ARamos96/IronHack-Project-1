@@ -1,15 +1,29 @@
-//One class for obtacle going down
-class downwardsObstacle {
-  constructor(gameScreen) {
+class Obstacle {
+  static tempDownwardsObstacleHeight;
+  static tempUpwardsObstacleHeight;
+
+  static generateObstacleHeight() {
+    const gap = 130;
+    const minHeight = 100;
+    const maxHeight = 300;
+
+    Obstacle.tempDownwardsObstacleHeight =
+      Math.round(Math.random() * (maxHeight - minHeight)) + minHeight; //This way we ensure height to AT LEAST be equal to minHeight (if math.round = 0)
+
+    Obstacle.tempUpwardsObstacleHeight =
+      700 - Obstacle.tempDownwardsObstacleHeight - gap; //Heights are dependent on each other
+  }
+
+  constructor(gameScreen, imgSrc, top, height) {
     this.gameScreen = gameScreen;
     this.left = this.gameScreen.offsetWidth - 80;
-    this.top = 0;
+    this.top = top;
     this.width = 70;
-    this.height = obstacleHeight()[0];
+    this.height = height;
 
     //Create img element, for now. If not maybe canvas.
     this.element = document.createElement("img");
-    this.element.src = "/Project-1/Images/downward-steward.png";
+    this.element.src = imgSrc;
     this.element.style.position = "absolute";
     this.element.style.height = `${this.height}px`;
     this.element.style.width = `${this.width}px`;
@@ -33,51 +47,28 @@ class downwardsObstacle {
   }
 }
 
-//And another class for obstacle going up
-class upwardsObstacle {
+//One class for obstacle going down
+class DownwardsObstacle extends Obstacle {
   constructor(gameScreen) {
-    this.gameScreen = gameScreen;
-    this.left = this.gameScreen.offsetWidth - 80;
 
-    //Height will depend on screen size, gap between obstacles and height of other obstacle
-    this.height = obstacleHeight()[1];
+    const img = "/Project-1/Images/downward-steward.png"
+    const height = Obstacle.tempDownwardsObstacleHeight
+    const top = 0
 
-    this.top = 700 - this.height; //Although an upward pipe, img extends downwards. If y were 0, pipe would extend out of the screen
-    this.width = 70;
+    super(gameScreen, img, top, height)
 
-    //Create <img> element, for now. If not maybe canvas.
-    this.element = document.createElement("img");
-    this.element.src = "/Project-1/Images/steward.png";
-    this.element.style.position = "absolute";
-    this.element.style.height = `${this.height}px`;
-    this.element.style.width = `${this.width}px`;
-    this.element.style.top = `${this.top}px`;
-    this.element.style.left = `${this.left}px`;
-
-    //Append <img> to HTML
-    this.gameScreen.appendChild(this.element);
-  }
-
-  updatePosition() {
-    this.element.style.left = `${this.left}px`;
-  }
-
-  move() {
-    //Move obstacle left
-    this.left -= 3;
-
-    //Update position onscreen
-    this.updatePosition();
   }
 }
 
-function obstacleHeight() {
-  const gap = 180;
-  const minHeight = 150;
-  const maxHeight = 300;
+//And another class for obstacle going up
+class UpwardsObstacle extends Obstacle {
+  constructor(gameScreen) {
 
-  let downwardsObstacleHeight =
-    Math.round(Math.random() * (maxHeight - minHeight)) + minHeight; //This way we ensure height to AT LEAST be equal to minHeight (if math.round = 0)
-  let upwardsObstacleHeight = 700 - downwardsObstacleHeight - gap;
-  return [downwardsObstacleHeight, upwardsObstacleHeight];
+    const img = "/Project-1/Images/steward.png"
+    const height = Obstacle.tempUpwardsObstacleHeight
+    const top = 700 - Obstacle.tempUpwardsObstacleHeight
+
+    super(gameScreen, img, top, height)
+
+  }
 }

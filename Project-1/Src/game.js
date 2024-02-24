@@ -27,8 +27,6 @@ class Game {
     this.gameIntervalId;
     this.refreshRate = 1000 / 60; //60fps
 
-    this.obstacleIntervalId;
-
     //Add sounds
     this.themeMusic = document.getElementById("theme-music");
     this.wastedAudio = document.getElementById("wasted-sound");
@@ -40,7 +38,7 @@ class Game {
     this.scoreElement.innerHTML = this.score;
 
     // Update the best score element
-    this.bestScoreElement.innerHTML = this.bestScore;
+    //this.bestScoreElement.innerHTML = this.bestScore;
   }
 
   start() {
@@ -110,11 +108,11 @@ class Game {
         //Add 1 point
         this.score++;
 
-        //Update best score whenever score surpasses its value
+        /*//Update best score whenever score surpasses its value
         if (this.score > this.bestScore) {
           this.bestScore = this.score;
           this.bestScoreElement.innerHTML = this.bestScore;
-        }
+        }*/
 
         //Update score
         this.scoreElement.innerHTML = this.score;

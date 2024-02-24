@@ -4,8 +4,8 @@ class Obstacle {
 
   static generateObstacleHeight() {
     const gap = 140;
-    const minHeight = 100;
-    const maxHeight = 300;
+    const minHeight = 50;
+    const maxHeight = 350;
 
     Obstacle.tempDownwardsObstacleHeight =
       Math.round(Math.random() * (maxHeight - minHeight)) + minHeight; //This way we ensure height to AT LEAST be equal to minHeight (if math.round = 0)
@@ -40,7 +40,7 @@ class Obstacle {
 
   move() {
     //Move obstacle left
-    this.left -= 3;
+    this.left -= 4.5;
 
     //Update position onscreen
     this.updatePosition();

@@ -59,7 +59,8 @@ class Game {
 
     //Play game music theme
 
-    this.themeMusic.play();
+    this.themeMusic.play()
+    this.themeMusic.volume = 0.5;
 
     // Call reset when starting the game
     this.reset();
